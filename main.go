@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/mv-kan/adventofcode2023/pkg/day3"
+	"github.com/mv-kan/adventofcode2023/pkg/day4"
 )
 
 func main() {
@@ -19,13 +19,6 @@ func main() {
 	// fmt.Println("Hello world")
 	// result := day3.Solve("./pkg/day3/input_test.txt")
 	// fmt.Printf("Day3 test: %d\n", result)
-	result := day3.Solve("./pkg/day3/input_test.txt")
-	fmt.Printf("Day3 test: %d\n", result)
-
-	result = day3.Solve2("./pkg/day3/input_test.txt")
-	fmt.Printf("Day3 part2 test: %d\n", result)
-
-	result = day3.Solve2("./pkg/day3/input.txt")
-	fmt.Printf("Day3 part2 test: %d\n", result)
-
+	result := day4.Solve("./pkg/day4/input.txt")
+	fmt.Printf("Day4 test: %d\n", result)
 }
