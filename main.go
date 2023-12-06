@@ -19,8 +19,13 @@ func main() {
 	// fmt.Println("Hello world")
 	// result := day3.Solve("./pkg/day3/input_test.txt")
 	// fmt.Printf("Day3 test: %d\n", result)
-	result := day3.Solve("./pkg/day3/input_test2.txt")
-	fmt.Printf("Day3 test2: %d\n", result)
-	result = day3.Solve("./pkg/day3/input_part1.txt")
-	fmt.Printf("Day3 part1: %d\n", result)
+	result := day3.Solve("./pkg/day3/input_test.txt")
+	fmt.Printf("Day3 test: %d\n", result)
+
+	result = day3.Solve2("./pkg/day3/input_test.txt")
+	fmt.Printf("Day3 part2 test: %d\n", result)
+
+	result = day3.Solve2("./pkg/day3/input.txt")
+	fmt.Printf("Day3 part2 test: %d\n", result)
+
 }
