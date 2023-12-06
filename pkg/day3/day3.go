@@ -83,16 +83,17 @@ func Solve(filename string) int {
 
 	result := 0
 	bufn := ""
-	ok := false
 	for i := 0; i < len(grid); i++ {
 		fmt.Printf("%d)\t", i)
+		ok := false
 		for j := 0; j < len(grid[0]); j++ {
 			if isNumber(grid[i][j]) {
 				if !ok {
 					ok = checkNumForAdjacentSymbols(grid, i, j)
 				}
 				bufn += string(grid[i][j])
-			} else {
+			}
+			if j == len(grid[0])-1 || !isNumber(grid[i][j]) {
 				if ok {
 					n, err := strconv.Atoi(bufn)
 					if err != nil {
