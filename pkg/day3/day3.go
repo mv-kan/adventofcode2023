@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func isNumber(r byte) bool {
@@ -38,9 +39,10 @@ func getDims(input string) (i int, j int) {
 func fillGrid(filecontent string, grid [][]byte) {
 	x := len(grid)
 	y := len(grid[0])
+	str := strings.Split(filecontent, "\n")
 	for i := 0; i < x; i++ {
 		for j := 0; j < y; j++ {
-			grid[i][j] = filecontent[i*x+j+i]
+			grid[i][j] = str[i][j]
 		}
 	}
 }
