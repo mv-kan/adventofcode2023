@@ -3,22 +3,12 @@ package main
 import (
 	"fmt"
 
-	"github.com/mv-kan/adventofcode2023/pkg/day4"
+	"github.com/mv-kan/adventofcode2023/pkg/day6"
 )
 
 func main() {
-	// result := day1.Solve("./pkg/day1/input.txt")
-	// fmt.Printf("Day1: %d\n", result)
-	// result = day1.SolvePart2("./pkg/day1/input_part2.txt")
-	// // result = day1.SolvePart2("./pkg/day1/input_test.txt")
-	// fmt.Printf("Day1 part2: %d\n", result)
-	// result := day2.Solve("./pkg/day2/input_part1.txt")
-	// fmt.Printf("Day2: %d\n", result)
-	// result = day2.Solve2("./pkg/day2/input_part2.txt")
-	// fmt.Printf("Day2 part2: %d\n", result)
-	// fmt.Println("Hello world")
-	// result := day3.Solve("./pkg/day3/input_test.txt")
-	// fmt.Printf("Day3 test: %d\n", result)
-	result := day4.Solve("./pkg/day4/input.txt")
-	fmt.Printf("Day4 test: %d\n", result)
+	result := day6.Solve("./pkg/day6/input_test.txt")
+	fmt.Printf("result = %d\n", result)
+	result = day6.Solve2("./pkg/day6/input.txt")
+	fmt.Printf("result part 2 = %d\n", result)
 }
