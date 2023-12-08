@@ -1,7 +1,6 @@
 package day4
 
 import (
-	"bufio"
 	"log"
 	"os"
 	"strconv"
@@ -10,7 +9,7 @@ import (
 
 func parseCardId(str string) (int, string) {
 	s := strings.Split(str, ":")
-	gameStr := strings.Split(s[0], " ")
+	gameStr := strings.Fields(s[0])
 	id, err := strconv.Atoi(gameStr[1])
 	if err != nil {
 		panic(err)
@@ -25,7 +24,7 @@ func splitIntoWinning(str string) []string {
 func trimSplitAndCompare(cards []string) (points int) {
 	winningCards := map[int]bool{}
 	winningCardsStr := strings.Trim(cards[0], " ")
-	winningCardsStrSl := strings.Split(winningCardsStr, " ")
+	winningCardsStrSl := strings.Fields(winningCardsStr)
 	for i := 0; i < len(winningCardsStrSl); i++ {
 		n, err := strconv.Atoi(winningCardsStrSl[i])
 		if err != nil {
@@ -34,7 +33,7 @@ func trimSplitAndCompare(cards []string) (points int) {
 		winningCards[n] = true
 	}
 	ourCardsStr := strings.Trim(cards[1], " ")
-	ourCardStrSl := strings.Split(ourCardsStr, " ")
+	ourCardStrSl := strings.Fields(ourCardsStr)
 	ourCards := []int{}
 	for i := 0; i < len(ourCardStrSl); i++ {
 		if ourCardStrSl[i] == "" {
@@ -50,11 +49,7 @@ func trimSplitAndCompare(cards []string) (points int) {
 	for i := 0; i < len(ourCards); i++ {
 		_, ok := winningCards[ourCards[i]]
 		if ok {
-			if points == 0 {
-				points = 1
-			} else {
-				points *= 2
-			}
+			points++
 		}
 	}
 	return
@@ -67,18 +62,20 @@ func readFile(filename string) string {
 	return string(file)
 }
 func Solve(filename string) int {
-	file, err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-	scanner := bufio.NewScanner(file)
+	filecontent := readFile(filename)
+	cards := strings.Split(filecontent, "\n")
 	result := 0
-	for scanner.Scan() {
-		str := scanner.Text()
-		_, str = parseCardId(str)
-		cards := splitIntoWinning(str)
-		result += trimSplitAndCompare(cards)
+	cardsNum := len(cards)
+	for i := 0; i < cardsNum; i++ {
+		str := cards[i]
+		id, str := parseCardId(str)
+		winOurCards := splitIntoWinning(str)
+		points := trimSplitAndCompare(winOurCards)
+		for i := 1; i <= points; i++ {
+			cards = append(cards, cards[id+i-1])
+		}
+		cardsNum = len(cards)
+		result++
 	}
 	return result
 }
