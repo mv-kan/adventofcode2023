@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	result := day9.Solve("./pkg/day9/input.txt")
+	result := day9.Solve2("./pkg/day9/input.txt")
 	fmt.Println(result)
 }
