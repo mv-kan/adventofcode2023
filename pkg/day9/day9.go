@@ -50,6 +50,7 @@ func calcNext(nums []int) int {
 			}
 		}
 		diffss = append(diffss, diffs)
+		diffssLen = len(diffss)
 		if allZero {
 			break
 		}
@@ -64,12 +65,10 @@ func calcNext(nums []int) int {
 
 func Solve(filename string) int {
 	nums := parseInput(filename)
+	result := 0
 	for i := 0; i < len(nums); i++ {
-		result := calcNext(nums[i])
+		result += calcNext(nums[i])
 		fmt.Printf("r = %d\n", result)
 	}
-
-	result := 0
-
 	return result
 }
